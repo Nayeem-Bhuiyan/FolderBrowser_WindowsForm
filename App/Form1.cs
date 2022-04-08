@@ -69,9 +69,9 @@ namespace App
         {
            string SearchText= textBox2.Text;
             listBox1.Items.Clear();
-            foreach (var file in allFilesInFolder.Where(x => x.Contains(SearchText)))
+            foreach (var code in UniquefilesCode.Where(x => x.Contains(SearchText)))
             {
-                listBox1.Items.Add(file);
+                listBox1.Items.Add(code);
             }
             
         }

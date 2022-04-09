@@ -229,9 +229,6 @@ namespace App
                
             }
 
- 
-          
-
             if (!String.IsNullOrWhiteSpace(text))
             {
                 int charLocation = text.IndexOf(stopAt, StringComparison.Ordinal);

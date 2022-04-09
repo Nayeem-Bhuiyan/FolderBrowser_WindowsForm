@@ -187,6 +187,7 @@ namespace App
 
         private void btnCreateRef_Click(object sender, EventArgs e)
         {
+            List<string> codeList = new List<string>();
             try
             {
                 string[] sourceFilePathList = Directory.GetFiles(textBox1.Text);
@@ -196,10 +197,19 @@ namespace App
                 foreach (var sourcefilePath in sourceFilePathList)
                 {
                    string code= Helper.FindCode(Path.GetFileName(sourcefilePath));
+                   string filterCode =codeList.Where(x => x==code).FirstOrDefault();
+                    if (filterCode==null)
+                    {
+                        codeList.Add(code);
+                        string fileName = Path.GetFileName(sourcefilePath);
+                        destinationFilePath =Path.Combine(txtReferenceFolderDirectory.Text, fileName);
+                        File.Copy(sourcefilePath, destinationFilePath, true);
+                    }
+                    else
+                    {
+
+                    }
                     
-                    string fileName = Path.GetFileName(sourcefilePath);
-                    destinationFilePath =Path.Combine(txtReferenceFolderDirectory.Text, fileName);
-                    File.Copy(sourcefilePath, destinationFilePath, true);
 
                 }
                 MessageBox.Show("Operation Succfully Done!!");

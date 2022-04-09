@@ -248,9 +248,21 @@ namespace App
             cmbCodeLength.Items.Add("16");
 
 
-            
+            cmbCodeLength.Items.
+            textBox2.Text="Search Code";
 
 
+
+        }
+
+        private void textBox2_MouseEnter(object sender, EventArgs e)
+        {
+            textBox2.Text="";
+        }
+
+        private void textBox2_MouseLeave(object sender, EventArgs e)
+        {
+            textBox2.Text="Search Code";
         }
     }
     static class Helper

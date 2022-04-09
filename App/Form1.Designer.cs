@@ -84,6 +84,8 @@
             this.textBox2.Size = new System.Drawing.Size(178, 20);
             this.textBox2.TabIndex = 4;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox2.MouseEnter += new System.EventHandler(this.textBox2_MouseEnter);
+            this.textBox2.MouseLeave += new System.EventHandler(this.textBox2_MouseLeave);
             // 
             // label2
             // 

@@ -248,7 +248,7 @@ namespace App
             cmbCodeLength.Items.Add("16");
 
 
-            cmbCodeLength.Items.
+           
             textBox2.Text="Search Code";
 
 

@@ -42,9 +42,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(661, 74);
+            this.button1.Location = new System.Drawing.Point(871, 73);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(104, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "Browse";
             this.button1.UseVisualStyleBackColor = true;
@@ -63,7 +63,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(12, 75);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(650, 20);
+            this.textBox1.Size = new System.Drawing.Size(853, 20);
             this.textBox1.TabIndex = 2;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -79,7 +79,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(13, 105);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(649, 20);
+            this.textBox2.Size = new System.Drawing.Size(852, 20);
             this.textBox2.TabIndex = 4;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
@@ -102,7 +102,7 @@
             // 
             // btnBrowseReference
             // 
-            this.btnBrowseReference.Location = new System.Drawing.Point(684, 334);
+            this.btnBrowseReference.Location = new System.Drawing.Point(899, 334);
             this.btnBrowseReference.Name = "btnBrowseReference";
             this.btnBrowseReference.Size = new System.Drawing.Size(104, 23);
             this.btnBrowseReference.TabIndex = 10;
@@ -114,14 +114,14 @@
             // 
             this.txtReferenceFolderDirectory.Location = new System.Drawing.Point(197, 335);
             this.txtReferenceFolderDirectory.Name = "txtReferenceFolderDirectory";
-            this.txtReferenceFolderDirectory.Size = new System.Drawing.Size(487, 20);
+            this.txtReferenceFolderDirectory.Size = new System.Drawing.Size(696, 20);
             this.txtReferenceFolderDirectory.TabIndex = 11;
             // 
             // btnCreateRef
             // 
-            this.btnCreateRef.Location = new System.Drawing.Point(642, 392);
+            this.btnCreateRef.Location = new System.Drawing.Point(899, 381);
             this.btnCreateRef.Name = "btnCreateRef";
-            this.btnCreateRef.Size = new System.Drawing.Size(117, 35);
+            this.btnCreateRef.Size = new System.Drawing.Size(104, 35);
             this.btnCreateRef.TabIndex = 12;
             this.btnCreateRef.Text = "Create Ref";
             this.btnCreateRef.UseVisualStyleBackColor = true;
@@ -131,7 +131,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1018, 450);
             this.Controls.Add(this.btnCreateRef);
             this.Controls.Add(this.txtReferenceFolderDirectory);
             this.Controls.Add(this.btnBrowseReference);

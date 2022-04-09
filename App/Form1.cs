@@ -173,7 +173,16 @@ namespace App
 
         private void btnCreateRef_Click(object sender, EventArgs e)
         {
+           string[] sourceFilePathList = Directory.GetFiles(textBox1.Text);
+            
+            string destinationFilePath = string.Empty;
 
+            foreach (var sourcefilePath in sourceFilePathList)
+            {
+                string fileName = Path.GetFileName(sourcefilePath);
+                destinationFilePath =Path.Combine(txtReferenceFolderDirectory.Text, fileName);
+                File.Copy(sourcefilePath, destinationFilePath, true);
+            }
         }
 
  

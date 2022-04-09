@@ -24,6 +24,8 @@ namespace App
         List<string> UniquefilesCode = new List<string>();
         private void button1_Click(object sender, EventArgs e)
         {
+            UniquefilesCode.Clear();
+           
 
             FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
             if (folderBrowser.ShowDialog() == DialogResult.OK)
@@ -35,23 +37,27 @@ namespace App
             string folderPath=textBox1.Text;
             if (folderPath !=null)
             {
+                
 
-                 allFilesInFolder=Directory.GetFiles(folderPath);
+                allFilesInFolder=Directory.GetFiles(folderPath);
                
                 listBox1.Items.Clear();
                 if (allFilesInFolder.Count()>0)
                 {
+                    
                     foreach (var file in allFilesInFolder)
                     {
                         
                         string code =Helper.GetUntilOrEmpty(Path.GetFileName(file), "_");
-
+                        
                         if (!UniquefilesCode.Contains(code))
                         {
                             UniquefilesCode.Add(code);
                             listBox1.Items.Add(code);
                         }
                     }
+
+                    label3.Text=Convert.ToString(UniquefilesCode.Count()-1);
                 }
                 else
                 {
@@ -64,10 +70,10 @@ namespace App
         }
 
 
-
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-           string SearchText= textBox2.Text;
+
+            string SearchText= textBox2.Text;
             listBox1.Items.Clear();
             foreach (var code in UniquefilesCode.Where(x => x.Contains(SearchText)))
             {
@@ -78,8 +84,26 @@ namespace App
     }
     static class Helper
     {
-        public static string GetUntilOrEmpty(this string text, string stopAt = "-")
+        public static string GetUntilOrEmpty(this string text, string stopAt = "_")
         {
+
+           
+            var list = new[] { "~", "_", "-", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", "=", "\"" };
+            bool isTrue = false;
+            stopAt=String.Empty;  
+            foreach (var item in list)
+            {
+                isTrue=item.Any(text.Contains);
+                if (isTrue)
+                {
+                    stopAt=item;
+                }
+               
+            }
+
+ 
+          
+
             if (!String.IsNullOrWhiteSpace(text))
             {
                 int charLocation = text.IndexOf(stopAt, StringComparison.Ordinal);

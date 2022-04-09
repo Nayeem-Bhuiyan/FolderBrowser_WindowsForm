@@ -35,6 +35,9 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnBrowseReference = new System.Windows.Forms.Button();
+            this.txtReferenceFolderDirectory = new System.Windows.Forms.TextBox();
+            this.btnCreateRef = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -69,7 +72,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(13, 139);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(345, 277);
+            this.listBox1.Size = new System.Drawing.Size(178, 277);
             this.listBox1.TabIndex = 3;
             // 
             // textBox2
@@ -83,7 +86,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(358, 160);
+            this.label2.Location = new System.Drawing.Point(202, 142);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 13);
             this.label2.TabIndex = 8;
@@ -92,16 +95,46 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(422, 160);
+            this.label3.Location = new System.Drawing.Point(259, 158);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 13);
             this.label3.TabIndex = 9;
+            // 
+            // btnBrowseReference
+            // 
+            this.btnBrowseReference.Location = new System.Drawing.Point(684, 334);
+            this.btnBrowseReference.Name = "btnBrowseReference";
+            this.btnBrowseReference.Size = new System.Drawing.Size(104, 23);
+            this.btnBrowseReference.TabIndex = 10;
+            this.btnBrowseReference.Text = "Browse";
+            this.btnBrowseReference.UseVisualStyleBackColor = true;
+            this.btnBrowseReference.Click += new System.EventHandler(this.btnBrowseReference_Click);
+            // 
+            // txtReferenceFolderDirectory
+            // 
+            this.txtReferenceFolderDirectory.Location = new System.Drawing.Point(197, 335);
+            this.txtReferenceFolderDirectory.Name = "txtReferenceFolderDirectory";
+            this.txtReferenceFolderDirectory.Size = new System.Drawing.Size(487, 20);
+            this.txtReferenceFolderDirectory.TabIndex = 11;
+            // 
+            // btnCreateRef
+            // 
+            this.btnCreateRef.Location = new System.Drawing.Point(642, 392);
+            this.btnCreateRef.Name = "btnCreateRef";
+            this.btnCreateRef.Size = new System.Drawing.Size(117, 35);
+            this.btnCreateRef.TabIndex = 12;
+            this.btnCreateRef.Text = "Create Ref";
+            this.btnCreateRef.UseVisualStyleBackColor = true;
+            this.btnCreateRef.Click += new System.EventHandler(this.btnCreateRef_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnCreateRef);
+            this.Controls.Add(this.txtReferenceFolderDirectory);
+            this.Controls.Add(this.btnBrowseReference);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox2);
@@ -125,6 +158,9 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnBrowseReference;
+        private System.Windows.Forms.TextBox txtReferenceFolderDirectory;
+        private System.Windows.Forms.Button btnCreateRef;
     }
 }
 

@@ -25,12 +25,16 @@ namespace App
         string[] allFilesInFolder = { };
 
         List<string> UniquefilesCode = new List<string>();
+
+      
         private void button1_Click(object sender, EventArgs e)
         {
 
             try
             {
                 UniquefilesCode.Clear();
+        
+            
 
 
                 FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
@@ -55,8 +59,13 @@ namespace App
                         {
 
                             string code = Helper.FindCode(Path.GetFileName(file));
-                            UniquefilesCode.Add(code);
+                           
+                            if (UniquefilesCode.Any(x => x.ToLower()!=code.ToLower())==false&& code!="")
+                            {
+                                UniquefilesCode.Add(code);
                                 
+                            }
+
                         }
 
                         foreach (var item in UniquefilesCode.Distinct().ToArray())
@@ -127,10 +136,12 @@ namespace App
 
                             string code = Helper.FindCode(Path.GetFileName(file));
 
-                            if (!UniquefilesCode.Contains(code))
+                            if (!UniquefilesCode.Contains(code)&&code!="")
                             {
                                 UniquefilesCode.Add(code);
                                 listBox1.Items.Add(code);
+                                
+                                
                             }
                         }
 
@@ -149,6 +160,23 @@ namespace App
                 throw;
             }
         }
+
+        private void btnBrowseReference_Click(object sender, EventArgs e)
+        {
+
+            FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
+            if (folderBrowser.ShowDialog() == DialogResult.OK)
+                txtReferenceFolderDirectory.Text=folderBrowser.SelectedPath;
+            else
+                MessageBox.Show("please Select folder");
+        }
+
+        private void btnCreateRef_Click(object sender, EventArgs e)
+        {
+
+        }
+
+ 
     }
     static class Helper
     {

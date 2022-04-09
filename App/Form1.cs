@@ -217,7 +217,7 @@ namespace App
         public static string FindCode(this string text)
         {
             string stopAt = String.Empty;
-            var listOfSpecialCharecter = new[] {"_", "-", "~", ".","`", "!", "@", "#", "$", "%", "^", "&", "*", "(",")", "+", "=", @"\"};
+            var listOfSpecialCharecter = new[] {"_", "-", "~","`", "!", "@", "#", "$", "%", "^", "&", "*", "(",")", "+", "=", @"\"};
             bool isTrue = false;
             foreach (var specialCharecter in listOfSpecialCharecter)
             {

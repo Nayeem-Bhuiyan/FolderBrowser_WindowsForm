@@ -60,7 +60,7 @@ namespace App
 
                             string code = Helper.FindCode(Path.GetFileName(file));
                            
-                            if (UniquefilesCode.Any(x => x.ToLower()!=code.ToLower())&& code!="")
+                            if (UniquefilesCode.Any(x => x.ToLower()!=code.ToLower())==true&& code!="")
                             {
                                 UniquefilesCode.Add(code);
                                 
@@ -136,7 +136,7 @@ namespace App
 
                             string code = Helper.FindCode(Path.GetFileName(file));
 
-                            if (!UniquefilesCode.Contains(code)&&code!="")
+                            if (UniquefilesCode.Contains(code)==false&&code!="")
                             {
                                 UniquefilesCode.Add(code);
                                 listBox1.Items.Add(code);
@@ -164,32 +164,50 @@ namespace App
         private void btnBrowseReference_Click(object sender, EventArgs e)
         {
 
-            FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
-            if (folderBrowser.ShowDialog() == DialogResult.OK)
+            try
             {
-                txtReferenceFolderDirectory.Text=folderBrowser.SelectedPath+"\\"+"Ref";
-                Directory.CreateDirectory(Path.Combine(folderBrowser.SelectedPath, "Ref"));
+                FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
+                if (folderBrowser.ShowDialog() == DialogResult.OK)
+                {
+                    txtReferenceFolderDirectory.Text=folderBrowser.SelectedPath+"\\"+"Ref";
+                    Directory.CreateDirectory(Path.Combine(folderBrowser.SelectedPath, "Ref"));
+                }
+                else
+                {
+                    MessageBox.Show("please Select folder");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("please Select folder");
+                MessageBox.Show(ex.Message);
+                throw;
             }
                 
         }
 
         private void btnCreateRef_Click(object sender, EventArgs e)
         {
-           string[] sourceFilePathList = Directory.GetFiles(textBox1.Text);
-            
-            string destinationFilePath = string.Empty;
-
-            foreach (var sourcefilePath in sourceFilePathList)
+            try
             {
-                string fileName = Path.GetFileName(sourcefilePath);
-                destinationFilePath =Path.Combine(txtReferenceFolderDirectory.Text, fileName);
-                File.Copy(sourcefilePath, destinationFilePath, true);
+                string[] sourceFilePathList = Directory.GetFiles(textBox1.Text);
+
+                string destinationFilePath = string.Empty;
+
+                foreach (var sourcefilePath in sourceFilePathList)
+                {
+                    string fileName = Path.GetFileName(sourcefilePath);
+                    destinationFilePath =Path.Combine(txtReferenceFolderDirectory.Text, fileName);
+                    File.Copy(sourcefilePath, destinationFilePath, true);
+
+                }
                 MessageBox.Show("Operation Succfully Done!!");
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw;
+            }
+            
         }
 
  

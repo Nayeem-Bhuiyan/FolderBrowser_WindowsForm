@@ -38,6 +38,8 @@
             this.btnBrowseReference = new System.Windows.Forms.Button();
             this.txtReferenceFolderDirectory = new System.Windows.Forms.TextBox();
             this.btnCreateRef = new System.Windows.Forms.Button();
+            this.cmbCodeLength = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -79,7 +81,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(13, 105);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(852, 20);
+            this.textBox2.Size = new System.Drawing.Size(178, 20);
             this.textBox2.TabIndex = 4;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
@@ -127,11 +129,39 @@
             this.btnCreateRef.UseVisualStyleBackColor = true;
             this.btnCreateRef.Click += new System.EventHandler(this.btnCreateRef_Click);
             // 
+            // cmbCodeLength
+            // 
+            this.cmbCodeLength.FormattingEnabled = true;
+            this.cmbCodeLength.Items.AddRange(new object[] {
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.cmbCodeLength.Location = new System.Drawing.Point(205, 103);
+            this.cmbCodeLength.Name = "cmbCodeLength";
+            this.cmbCodeLength.Size = new System.Drawing.Size(162, 21);
+            this.cmbCodeLength.TabIndex = 13;
+            this.cmbCodeLength.SelectedIndexChanged += new System.EventHandler(this.cmbCodeLength_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(374, 110);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 13);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Code Length";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1018, 450);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cmbCodeLength);
             this.Controls.Add(this.btnCreateRef);
             this.Controls.Add(this.txtReferenceFolderDirectory);
             this.Controls.Add(this.btnBrowseReference);
@@ -144,6 +174,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,6 +192,8 @@
         private System.Windows.Forms.Button btnBrowseReference;
         private System.Windows.Forms.TextBox txtReferenceFolderDirectory;
         private System.Windows.Forms.Button btnCreateRef;
+        private System.Windows.Forms.ComboBox cmbCodeLength;
+        private System.Windows.Forms.Label label4;
     }
 }
 

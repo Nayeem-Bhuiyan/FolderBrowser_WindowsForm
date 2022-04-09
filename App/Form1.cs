@@ -19,9 +19,9 @@ namespace App
             listBox1.Text=String.Empty;
             UniquefilesCode.Clear();
 
-
+           
         }
-
+        int selectedCodeLength = 0;
         string[] allFilesInFolder = { };
 
         List<string> UniquefilesCode = new List<string>();
@@ -58,7 +58,7 @@ namespace App
                         foreach (var file in allFilesInFolder)
                         {
 
-                            string code = Helper.FindCode(Path.GetFileName(file));
+                            string code = Helper.FindCode(Path.GetFileName(file), selectedCodeLength);
                            
                             if (UniquefilesCode.Any(x => x.ToLower()!=code.ToLower())==true&& code!="")
                             {
@@ -134,7 +134,7 @@ namespace App
                         foreach (var file in allFilesInFolder)
                         {
 
-                            string code = Helper.FindCode(Path.GetFileName(file));
+                            string code = Helper.FindCode(Path.GetFileName(file), selectedCodeLength);
 
                             if (UniquefilesCode.Contains(code)==false&&code!="")
                             {
@@ -196,7 +196,7 @@ namespace App
 
                 foreach (var sourcefilePath in sourceFilePathList)
                 {
-                   string code= Helper.FindCode(Path.GetFileName(sourcefilePath));
+                   string code= Helper.FindCode(Path.GetFileName(sourcefilePath), selectedCodeLength);
                    string filterCode =codeList.Where(x => x==code).FirstOrDefault();
                     if (filterCode==null)
                     {
@@ -222,12 +222,22 @@ namespace App
             
         }
 
- 
+        private void cmbCodeLength_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedCodeLength =Convert.ToInt32(this.cmbCodeLength.GetItemText(this.cmbCodeLength.SelectedItem));
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            cmbCodeLength.SelectedItem = null;
+            cmbCodeLength.SelectedText = "select";
+        }
     }
     static class Helper
     {
-        public static string FindCode(this string text)
+        public static string FindCode(this string text,int codeLength)
         {
+            
             string stopAt = String.Empty;
             var listOfSpecialCharecter = new[] {"_", "-", "~","`", "!", "@", "#", "$", "%", "^", "&", "*", "(",")", "+", "=", @"\"};
             bool isTrue = false;
@@ -247,7 +257,7 @@ namespace App
 
                 if (charLocation > 0)
                 {
-                    return text.Substring(0, charLocation);
+                    return text.Substring(0, codeLength);
                 }
             }
 

@@ -60,7 +60,7 @@ namespace App
 
                             string code = Helper.FindCode(Path.GetFileName(file));
                            
-                            if (UniquefilesCode.Any(x => x.ToLower()!=code.ToLower())==false&& code!="")
+                            if (UniquefilesCode.Any(x => x.ToLower()!=code.ToLower())&& code!="")
                             {
                                 UniquefilesCode.Add(code);
                                 

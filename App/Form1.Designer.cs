@@ -132,14 +132,6 @@
             // cmbCodeLength
             // 
             this.cmbCodeLength.FormattingEnabled = true;
-            this.cmbCodeLength.Items.AddRange(new object[] {
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
             this.cmbCodeLength.Location = new System.Drawing.Point(205, 103);
             this.cmbCodeLength.Name = "cmbCodeLength";
             this.cmbCodeLength.Size = new System.Drawing.Size(162, 21);

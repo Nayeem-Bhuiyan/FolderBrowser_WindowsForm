@@ -230,7 +230,27 @@ namespace App
         private void Form1_Load(object sender, EventArgs e)
         {
             cmbCodeLength.SelectedItem = null;
-            cmbCodeLength.SelectedText = "select";
+            cmbCodeLength.SelectedIndex = cmbCodeLength.Items.Count - 1;
+
+            cmbCodeLength.Items.Add("Select");
+            cmbCodeLength.Items.Add("4");
+            cmbCodeLength.Items.Add("5");
+            cmbCodeLength.Items.Add("6");
+            cmbCodeLength.Items.Add("7");
+            cmbCodeLength.Items.Add("8");
+            cmbCodeLength.Items.Add("9");
+            cmbCodeLength.Items.Add("10");
+            cmbCodeLength.Items.Add("11");
+            cmbCodeLength.Items.Add("12");
+            cmbCodeLength.Items.Add("13");
+            cmbCodeLength.Items.Add("14");
+            cmbCodeLength.Items.Add("15");
+            cmbCodeLength.Items.Add("16");
+
+
+            
+
+
         }
     }
     static class Helper
@@ -254,11 +274,21 @@ namespace App
             if (!String.IsNullOrWhiteSpace(text))
             {
                 int charLocation = text.IndexOf(stopAt, StringComparison.Ordinal);
-
-                if (charLocation > 0)
+                if (codeLength>0)
                 {
-                    return text.Substring(0, codeLength);
+                    if (charLocation > 0)
+                    {
+                        return text.Substring(0, codeLength);
+                    }
                 }
+                else
+                {
+                    if (charLocation > 0)
+                    {
+                        return text.Substring(0, charLocation);
+                    }
+                }
+                
             }
 
             return String.Empty;

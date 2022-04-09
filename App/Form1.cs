@@ -166,8 +166,10 @@ namespace App
 
             FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
             if (folderBrowser.ShowDialog() == DialogResult.OK)
-                txtReferenceFolderDirectory.Text=folderBrowser.SelectedPath;
-            Directory.CreateDirectory(Path.Combine(txtReferenceFolderDirectory.Text, "Ref"));
+            {
+                txtReferenceFolderDirectory.Text=folderBrowser.SelectedPath+"\\"+"Ref";
+                Directory.CreateDirectory(Path.Combine(folderBrowser.SelectedPath, "Ref"));
+            }
             else
                 MessageBox.Show("please Select folder");
         }

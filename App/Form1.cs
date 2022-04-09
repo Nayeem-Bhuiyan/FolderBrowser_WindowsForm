@@ -171,7 +171,10 @@ namespace App
                 Directory.CreateDirectory(Path.Combine(folderBrowser.SelectedPath, "Ref"));
             }
             else
+            {
                 MessageBox.Show("please Select folder");
+            }
+                
         }
 
         private void btnCreateRef_Click(object sender, EventArgs e)
@@ -185,6 +188,7 @@ namespace App
                 string fileName = Path.GetFileName(sourcefilePath);
                 destinationFilePath =Path.Combine(txtReferenceFolderDirectory.Text, fileName);
                 File.Copy(sourcefilePath, destinationFilePath, true);
+                MessageBox.Show("Operation Succfully Done!!");
             }
         }
 

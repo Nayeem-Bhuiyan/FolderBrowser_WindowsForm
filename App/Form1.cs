@@ -16,6 +16,9 @@ namespace App
         public Form1()
         {
             InitializeComponent();
+            listBox1.Text=String.Empty;
+            UniquefilesCode.Clear();
+
 
         }
 
@@ -24,48 +27,57 @@ namespace App
         List<string> UniquefilesCode = new List<string>();
         private void button1_Click(object sender, EventArgs e)
         {
-            UniquefilesCode.Clear();
-           
 
-            FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
-            if (folderBrowser.ShowDialog() == DialogResult.OK)
-                textBox1.Text=folderBrowser.SelectedPath;
-            else
-                MessageBox.Show("please Select folder");
-
-
-            string folderPath=textBox1.Text;
-            if (folderPath !=null)
+            try
             {
-                
+                UniquefilesCode.Clear();
 
-                allFilesInFolder=Directory.GetFiles(folderPath);
-               
-                listBox1.Items.Clear();
-                if (allFilesInFolder.Count()>0)
+
+                FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
+                if (folderBrowser.ShowDialog() == DialogResult.OK)
+                    textBox1.Text=folderBrowser.SelectedPath;
+                else
+                    MessageBox.Show("please Select folder");
+
+
+                string folderPath = textBox1.Text;
+                if (folderPath !=null)
                 {
-                    
-                    foreach (var file in allFilesInFolder)
+
+
+                    allFilesInFolder=Directory.GetFiles(folderPath);
+
+                    listBox1.Items.Clear();
+                    if (allFilesInFolder.Count()>0)
                     {
-                        
-                        string code =Helper.GetUntilOrEmpty(Path.GetFileName(file), "_");
-                        
-                        if (!UniquefilesCode.Contains(code))
+
+                        foreach (var file in allFilesInFolder)
                         {
+
+                            string code = Helper.FindCode(Path.GetFileName(file));
                             UniquefilesCode.Add(code);
-                            listBox1.Items.Add(code);
+                                
                         }
+
+                        foreach (var item in UniquefilesCode.Distinct().ToArray())
+                        {
+                            listBox1.Items.Add(item);
+                        }
+
+                        label3.Text=Convert.ToString(listBox1.Items.Count);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sorry! no file in this folder");
                     }
 
-                    label3.Text=Convert.ToString(UniquefilesCode.Count()-1);
                 }
-                else
-                {
-                    MessageBox.Show("Sorry! no file in this folder");
-                }
-               
             }
+            catch (Exception)
+            {
 
+                throw;
+            }
 
         }
 
@@ -73,30 +85,84 @@ namespace App
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
-            string SearchText= textBox2.Text;
-            listBox1.Items.Clear();
-            foreach (var code in UniquefilesCode.Where(x => x.Contains(SearchText)))
+            try
             {
-                listBox1.Items.Add(code);
+                string SearchText = textBox2.Text.ToLower();
+                listBox1.Items.Clear();
+                foreach (var code in UniquefilesCode.Where(x => x.Contains(SearchText)))
+                {
+                    listBox1.Items.Add(code.ToLower());
+                }
+
+                label3.Text=Convert.ToString(listBox1.Items.Count);
             }
-            
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                UniquefilesCode.Clear();
+
+                string folderPath = textBox1.Text;
+                if (folderPath !=null)
+                {
+
+
+                    allFilesInFolder=Directory.GetFiles(folderPath);
+
+                    listBox1.Items.Clear();
+                    if (allFilesInFolder.Count()>0)
+                    {
+
+                        foreach (var file in allFilesInFolder)
+                        {
+
+                            string code = Helper.FindCode(Path.GetFileName(file));
+
+                            if (!UniquefilesCode.Contains(code))
+                            {
+                                UniquefilesCode.Add(code);
+                                listBox1.Items.Add(code);
+                            }
+                        }
+
+                        label3.Text=Convert.ToString(listBox1.Items.Count);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sorry! no file in this folder");
+                    }
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
     static class Helper
     {
-        public static string GetUntilOrEmpty(this string text, string stopAt = "_")
+        public static string FindCode(this string text)
         {
-
-           
-            var list = new[] { "~", "_", "-", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", "=", "\"" };
+            string stopAt = String.Empty;
+            var listOfSpecialCharecter = new[] {"_", "-", "~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(",")", "+", "=", @"\"};
             bool isTrue = false;
-            stopAt=String.Empty;  
-            foreach (var item in list)
+            foreach (var specialCharecter in listOfSpecialCharecter)
             {
-                isTrue=item.Any(text.Contains);
+                isTrue=specialCharecter.Any(text.Contains);
                 if (isTrue)
                 {
-                    stopAt=item;
+                    stopAt=specialCharecter;
                 }
                
             }

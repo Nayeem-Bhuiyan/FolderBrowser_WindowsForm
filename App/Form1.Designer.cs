@@ -123,7 +123,7 @@
             // 
             this.btnCreateRef.Location = new System.Drawing.Point(899, 381);
             this.btnCreateRef.Name = "btnCreateRef";
-            this.btnCreateRef.Size = new System.Drawing.Size(104, 35);
+            this.btnCreateRef.Size = new System.Drawing.Size(127, 35);
             this.btnCreateRef.TabIndex = 12;
             this.btnCreateRef.Text = "Create Ref";
             this.btnCreateRef.UseVisualStyleBackColor = true;
